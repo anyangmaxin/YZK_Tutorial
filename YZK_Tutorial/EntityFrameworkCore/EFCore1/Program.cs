@@ -2,17 +2,35 @@
 using EFCore1;
 
 Console.WriteLine("Hello, World!");
-Console.WriteLine("插入数据");
-using (var dbctx = new TestDbContext())
-{
-    Book book = new Book()
-    {
-        Price = 100,
-        PubTime = DateTime.Now.AddMonths(-3),
-        Title = "测试"
-    };
+//{
+//    Console.WriteLine("插入数据");
+//    using (var dbctx = new TestDbContext())
+//    {
+//        Book book = new Book()
+//        {
+//            Price = 100,
+//            PubTime = DateTime.Now.AddMonths(-3),
+//            Title = "测试"
+//        };
 
-    dbctx.Books.Add(book);
-    //推荐使用异步方法
-    await dbctx.SaveChangesAsync();
+//        dbctx.Books.Add(book);
+//        //推荐使用异步方法
+//        await dbctx.SaveChangesAsync();
+
+//    }
+//    Console.WriteLine("插入数据***************");
+//}
+
+{
+    Console.WriteLine("更新数据");
+    using (var dbctx = new TestDbContext())
+    {
+        var model=dbctx.Books.OrderByDescending(o => o.Id).FirstOrDefault();
+        model.Price += 20;
+
+        //推荐使用异步方法
+        await dbctx.SaveChangesAsync();
+
+    }
+    Console.WriteLine("更新数据***************");
 }
