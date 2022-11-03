@@ -9,6 +9,7 @@ namespace EFCore1
         {
             //throw new NotImplementedException();
             builder.ToTable("T_Persons");
+            builder.Property(e => e.Name).HasMaxLength(30).IsRequired();
         }
     }
 }
