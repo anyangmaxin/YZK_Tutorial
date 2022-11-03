@@ -14,6 +14,8 @@ namespace EFCore1
         {
             //throw new NotImplementedException();
             builder.ToTable("T_Books");
+            //设置Title列最长50，而且不可为空
+            builder.Property(e => e.Title).HasMaxLength(50).IsRequired();
         }
     }
 }
