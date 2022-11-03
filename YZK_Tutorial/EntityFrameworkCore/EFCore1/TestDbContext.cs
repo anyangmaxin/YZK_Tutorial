@@ -11,6 +11,8 @@ namespace EFCore1
     {
         public DbSet<Book> Books { get; set; }
 
+        public DbSet<Person> Persons { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
