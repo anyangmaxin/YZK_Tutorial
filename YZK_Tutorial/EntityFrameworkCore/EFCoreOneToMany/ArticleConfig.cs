@@ -13,6 +13,7 @@ namespace EFCoreOneToMany
         public void Configure(EntityTypeBuilder<Article> builder)
         {
            //这里可以配置对应表，对应字段 相关约束等信息
+       
         }
     }
 }
