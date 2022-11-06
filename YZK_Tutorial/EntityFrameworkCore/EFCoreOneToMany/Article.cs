@@ -15,5 +15,9 @@ namespace EFCoreOneToMany
         public string Content { get; set; }
 
         public List<Comment> Comments { get; set; } = new List<Comment>();
+
+
+        public bool IsDeleted { get; set; }
+
     }
 }
