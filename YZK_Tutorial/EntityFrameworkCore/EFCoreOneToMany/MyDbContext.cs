@@ -17,6 +17,7 @@ namespace EFCoreOneToMany
             //配置数据库连接
             string connStr = "Server=.;DataBase=TrainDB;Trusted_Connection=True;MultipleActiveResultSets=True;";
             optionsBuilder.UseSqlServer(connStr);
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,6 +25,7 @@ namespace EFCoreOneToMany
             base.OnModelCreating(modelBuilder);
             //指示配置类在此程序集下
             modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+            
         }
     }
 }
