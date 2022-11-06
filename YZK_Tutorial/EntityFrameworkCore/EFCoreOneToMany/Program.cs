@@ -6,7 +6,7 @@ Console.WriteLine("Hello, World!");
 IEnumerable<Article> articles;
 using (MyDbContext db = new MyDbContext())
 {
-    articles = db.Articles.ToList();
+    articles = db.Articles.Take(20).ToList();
 }
 
 foreach (Article article in articles)
