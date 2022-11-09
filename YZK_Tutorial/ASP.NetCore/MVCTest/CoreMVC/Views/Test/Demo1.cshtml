@@ -1,0 +1,10 @@
+﻿@{
+}
+@model CoreMVC.Models.Person
+<div>姓名：@Model.Name</div>
+<div>
+
+    @(@Model.IsVIP ? "会员" : "普通用户")
+
+</div>
+<div>创建时间：@Model.CreateTime</div>
