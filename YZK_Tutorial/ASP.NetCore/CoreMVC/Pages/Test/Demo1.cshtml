@@ -1,0 +1,5 @@
+﻿@page
+@model CoreMVC.Pages.Demo1Model
+<div>姓名：@Model.Person.Name</div>
+<div>@(Model.Person.IsVIP ? "VIP" : "普通会员")</div>
+<div>注册时间：@Model.Person.CreateTime</div>

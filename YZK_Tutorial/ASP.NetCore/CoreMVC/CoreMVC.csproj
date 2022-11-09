@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Pages\Demo1.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Test\Demo1.cshtml" />
+  </ItemGroup>
+
 </Project>
