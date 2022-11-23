@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DI_WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class TestController : ControllerBase
     {
@@ -15,7 +15,6 @@ namespace DI_WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("Add")]
         public IActionResult Add(int x, int y)
         {
             //return calculator.Add(3, 5);
@@ -23,7 +22,6 @@ namespace DI_WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("Add2")]
         public IActionResult Add2(int x, int y)
         {
             //return calculator.Add(3, 5);
