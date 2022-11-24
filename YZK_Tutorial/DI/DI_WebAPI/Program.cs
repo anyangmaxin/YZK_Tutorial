@@ -1,3 +1,5 @@
+using DI_Lib1;
+using DI_Lib2;
 using DI_WebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<Calculator>();
 //注入TestService
 builder.Services.AddScoped<TestService>();
+
+
+#region 测试多服务注册
+builder.Services.AddScoped<Class1>();
+builder.Services.AddScoped<Class2>();
+builder.Services.AddScoped<Class3>();
+builder.Services.AddScoped<Class4>();
+#endregion
 
 var app = builder.Build();
 
