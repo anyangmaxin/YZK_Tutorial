@@ -8,10 +8,12 @@ namespace DI_WebAPI.Controllers
     public class TestController : ControllerBase
     {
         private readonly Calculator calculator;
+        private readonly TestService testService;
 
-        public TestController(Calculator calculator)
+        public TestController(Calculator calculator, TestService testService)
         {
             this.calculator = calculator;
+            this.testService = testService;
         }
 
         [HttpPost]
@@ -26,6 +28,12 @@ namespace DI_WebAPI.Controllers
         {
             //return calculator.Add(3, 5);
             return Ok(this.calculator.Add(x, y));
+        }
+
+        [HttpGet]
+        public IActionResult GetFileCount()
+        {
+            return Ok(this.testService.Count());
         }
     }
 }

@@ -11,6 +11,8 @@ builder.Services.AddSwaggerGen();
 
 //注入计算类
 builder.Services.AddScoped<Calculator>();
+//注入TestService
+builder.Services.AddScoped<TestService>();
 
 var app = builder.Build();
 
