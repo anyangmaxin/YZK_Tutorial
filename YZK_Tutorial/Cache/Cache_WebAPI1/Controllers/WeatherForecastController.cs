@@ -31,6 +31,7 @@ namespace Cache_WebAPI1.Controllers
         }
 
         [HttpGet]
+        [ResponseCache(Duration = 10)]
         public IActionResult GetTime()
         {
             return Ok(DateTime.Now.ToString());
