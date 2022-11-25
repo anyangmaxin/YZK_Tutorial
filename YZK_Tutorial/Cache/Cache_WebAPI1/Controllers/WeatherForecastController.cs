@@ -31,10 +31,15 @@ namespace Cache_WebAPI1.Controllers
         }
 
         [HttpGet]
-        [ResponseCache(Duration = 0)]
         public IActionResult GetTime()
         {
             return Ok(DateTime.Now.ToString());
+        }
+
+        [HttpGet]
+        public ActionResult<string> Hello(string name)
+        {
+            return $"Hello {name}";
         }
     }
 }

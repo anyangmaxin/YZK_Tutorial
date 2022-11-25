@@ -19,7 +19,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+//启用服务器端响应缓存 
+app.UseResponseCaching();
 app.MapControllers();
 
 app.Run();
