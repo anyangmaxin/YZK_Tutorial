@@ -7,6 +7,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//注入内存缓存服务
+builder.Services.AddMemoryCache();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,7 +22,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 //启用服务器端响应缓存 
-app.UseResponseCaching();
+//app.UseResponseCaching();
 app.MapControllers();
 
 app.Run();
