@@ -2,19 +2,25 @@
 {
     public class MyDbContext
     {
-        public static Book? GetByIdAsync(long id)
+        public static Task<Book?> GetByIdAsync(long id)
         {
+            Book? book = null;
             switch (id)
             {
                 case 1:
-                    return new Book() { Id = id, Name = $"Book{id}" };
+                    book = new Book() { Id = id, Name = $"Book{id}" };
+                    break;
                 case 2:
-                    return new Book() { Id = id, Name = $"Book{id}" };
+                    book = new Book() { Id = id, Name = $"Book{id}" };
+                    break;
                 case 3:
-                    return new Book() { Id = id, Name = $"Book{id}" };
+                    book = new Book() { Id = id, Name = $"Book{id}" };
+                    break;
                 default:
-                    return null;
+                    book = null;
+                    break;
             }
+            return Task.FromResult<Book?>(book);
 
         }
     }
