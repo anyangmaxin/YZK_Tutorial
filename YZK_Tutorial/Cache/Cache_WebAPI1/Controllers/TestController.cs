@@ -19,7 +19,12 @@ namespace Cache_WebAPI1.Controllers
         [HttpGet]
         public ActionResult<Book?> GetBookById(long id)
         {
-            return MyDbContext.GetByIdAsync(id);
+            Book? result = MyDbContext.GetByIdAsync(id);
+            if (result == null)
+            {
+                return NotFound($"找不到ID={id}的书");
+            }
+            return result;
         }
     }
 }
