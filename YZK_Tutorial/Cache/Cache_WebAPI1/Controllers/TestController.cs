@@ -25,6 +25,8 @@ namespace Cache_WebAPI1.Controllers
             //先从缓存 拿，缓存 拿不到就调用回调函数从数据库中获取 然后再写入缓存 中
             Book? result = await this.memoryCache.GetOrCreateAsync($"Book{id}", async (e) =>
             {
+                //设置缓存 10秒钟过期
+                e.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(10);
                 logger.LogInformation($"从数据库中查找ID={id}的书籍");
 
                 return await MyDbContext.GetByIdAsync(id);
