@@ -38,6 +38,8 @@ namespace Cache_WebAPI1.Controllers
                 #endregion
                 logger.LogInformation($"从数据库中查找ID={id}的书籍");
 
+                //如果 传入的ID不存在，这个也会缓存 起来，下次同样的id也会从缓存 中获取 。
+
                 return await MyDbContext.GetByIdAsync(id);
             });
             logger.LogInformation($"查找ID={id}的书籍的结果{result}");
