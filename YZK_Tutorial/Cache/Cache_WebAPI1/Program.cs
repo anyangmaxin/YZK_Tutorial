@@ -1,3 +1,5 @@
+using Cache_WebAPI1.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +11,8 @@ builder.Services.AddSwaggerGen();
 
 //注入内存缓存服务
 builder.Services.AddMemoryCache();
+
+builder.Services.AddScoped<TestService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
