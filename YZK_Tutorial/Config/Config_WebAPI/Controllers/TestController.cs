@@ -8,7 +8,7 @@ namespace Config_WebAPI.Controllers
     public class TestController : ControllerBase
     {
         /// <summary>
-        /// 从系统环境变量获取值 
+        /// 从系统获取用户环境变量值 
         /// </summary>
         /// <returns></returns>
         [HttpGet]
