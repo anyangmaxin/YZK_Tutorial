@@ -18,8 +18,10 @@ builder.Services.AddScoped<BookService>();
 //×¢²áRedis
 builder.Services.AddStackExchangeRedisCache(options =>
 {
-    options.Configuration = "localhost";
-    options.InstanceName = "mx_";
+    //options.Configuration = "localhost";
+    options.Configuration = builder.Configuration.GetValue<string>("DB:Redis:Configuration");
+    //options.InstanceName = "mx_";
+    options.InstanceName = builder.Configuration.GetValue<string>("DB:Redis:InstanceName");
 });
 
 var app = builder.Build();
