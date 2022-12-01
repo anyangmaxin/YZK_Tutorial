@@ -9,6 +9,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+//Console.WriteLine(app.Environment.IsDevelopment());
+//Console.WriteLine(app.Environment.IsProduction());
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -16,6 +18,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//Console.WriteLine(app.Configuration.GetSection("ConnStr").Value);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
