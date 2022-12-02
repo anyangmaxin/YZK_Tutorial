@@ -41,6 +41,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EFCoreProject1", "EFCorePro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksEFCore", "EntityFrameworkCore\BooksEFCore\BooksEFCore.csproj", "{19274547-1426-4020-8CD8-A4D0EC02B09F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksEFCore_WebAPI", "EntityFrameworkCore\BooksEFCore_WebAPI\BooksEFCore_WebAPI.csproj", "{7D5919EE-554F-4A59-88FB-AEC1CECAB050}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{19274547-1426-4020-8CD8-A4D0EC02B09F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19274547-1426-4020-8CD8-A4D0EC02B09F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19274547-1426-4020-8CD8-A4D0EC02B09F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D5919EE-554F-4A59-88FB-AEC1CECAB050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D5919EE-554F-4A59-88FB-AEC1CECAB050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D5919EE-554F-4A59-88FB-AEC1CECAB050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D5919EE-554F-4A59-88FB-AEC1CECAB050}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,6 +119,7 @@ Global
 		{FBA89312-99D2-4EFD-9CB4-A82907FA001D} = {A497EC7B-8404-429C-95AE-2B6A040ED622}
 		{C4BBCBAC-9166-4296-8CB5-24B09903AE12} = {40BE4DC0-96ED-4A6B-BE79-C0A4C6B37EE5}
 		{19274547-1426-4020-8CD8-A4D0EC02B09F} = {C4BBCBAC-9166-4296-8CB5-24B09903AE12}
+		{7D5919EE-554F-4A59-88FB-AEC1CECAB050} = {C4BBCBAC-9166-4296-8CB5-24B09903AE12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E4DBA3E-43F2-4103-938F-325295459C8D}
