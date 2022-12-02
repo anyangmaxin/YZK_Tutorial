@@ -13,6 +13,14 @@ namespace BooksEFCore
     {
         public DbSet<Book> Books { get; set; }
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="options"></param>
+        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
+        {
+        }
+
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    base.OnConfiguring(optionsBuilder);
