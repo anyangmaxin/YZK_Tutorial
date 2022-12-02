@@ -1,3 +1,6 @@
+using BooksEFCore;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<MyDbContext>(opt =>
+{
+    string connStr = builder.Configuration.GetSection("DB:SqlServer").Value;
+    opt.UseSqlServer(connStr);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

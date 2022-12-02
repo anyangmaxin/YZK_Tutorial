@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BooksEFCore
 {
-    internal class MyDbContext : DbContext
+    public class MyDbContext : DbContext
     {
         public DbSet<Book> Books { get; set; }
 
