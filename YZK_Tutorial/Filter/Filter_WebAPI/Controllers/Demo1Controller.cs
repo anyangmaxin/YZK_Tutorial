@@ -25,7 +25,7 @@ namespace Filter_WebAPI.Controllers
         [HttpGet]
         public string TestMyActionFilter1()
         {
-
+            Console.WriteLine("MyActionFilter1执行中：");
             return "MyActionFilter1";
         }
     }
