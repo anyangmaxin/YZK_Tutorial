@@ -17,5 +17,16 @@ namespace Filter_WebAPI.Controllers
             string s = System.IO.File.ReadAllText("f:1.txt");
             return s;
         }
+
+        /// <summary>
+        /// 用于测试MyActionFilter1
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public string TestMyActionFilter1()
+        {
+
+            return "MyActionFilter1";
+        }
     }
 }

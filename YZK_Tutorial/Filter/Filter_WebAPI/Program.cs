@@ -13,7 +13,9 @@ builder.Services.AddSwaggerGen();
 //
 builder.Services.Configure<MvcOptions>(opt =>
 {
+    opt.Filters.Add<MyActionFilter1>();
     opt.Filters.Add<MyExectionFilter>();
+
 });
 
 var app = builder.Build();
