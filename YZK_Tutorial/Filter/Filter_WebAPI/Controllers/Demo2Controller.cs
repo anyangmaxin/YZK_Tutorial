@@ -1,4 +1,5 @@
-﻿using Filter_WebAPI.Model;
+﻿using Filter_WebAPI.Filter;
+using Filter_WebAPI.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Transactions;
@@ -86,6 +87,40 @@ namespace Filter_WebAPI.Controllers
                 scope.Complete();
                 return "OK";
             }
+        }
+
+        /// <summary>
+        /// 测试不需要自动事务
+        /// 结果是写入一条成功，一条失败
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [NotTransactional]
+        public async Task<string> AddBookPerson4()
+        {
+            myDbContext.Books.Add(new Model.Book { Title = "我最棒" + DateTime.Now });
+            await myDbContext.SaveChangesAsync();
+            myDbContext.Persons.Add(new Model.Person { Id = 1, Name = "姓名" + DateTime.Now, Age = 18 + Random.Shared.Next(1, 10) }); ;
+            await myDbContext.SaveChangesAsync();
+            return "OK";
+
+        }
+
+
+        /// <summary>
+        /// 测试需要自动事务
+        /// 结果 是一条也未写入
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<string> AddBookPerson5()
+        {
+            myDbContext.Books.Add(new Model.Book { Title = "我最棒" + DateTime.Now });
+            await myDbContext.SaveChangesAsync();
+            myDbContext.Persons.Add(new Model.Person { Id = 1, Name = "姓名" + DateTime.Now, Age = 18 + Random.Shared.Next(1, 10) }); ;
+            await myDbContext.SaveChangesAsync();
+            return "OK";
+
         }
 
     }
