@@ -20,11 +20,10 @@
         /// <returns></returns>
         public async Task InvokeAsync(HttpContext context)
         {
-            context.Response.ContentType = "text/html";
-            context.Response.WriteAsync("TestMiddleware Start <br/>");
+            await context.Response.WriteAsync("TestMiddleware Start <br/>");
             //执行下一个中间件
             await this.next(context);
-            context.Response.WriteAsync("TestMiddleware End <br/>");
+            await context.Response.WriteAsync("TestMiddleware End <br/>");
 
         }
     }
