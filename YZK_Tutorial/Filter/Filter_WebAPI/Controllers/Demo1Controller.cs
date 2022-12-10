@@ -5,6 +5,7 @@ namespace Filter_WebAPI.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v0")]
     public class Demo1Controller : ControllerBase
     {
         /// <summary>

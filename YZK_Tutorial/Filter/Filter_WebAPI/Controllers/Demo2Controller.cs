@@ -8,6 +8,7 @@ namespace Filter_WebAPI.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v1")]
     public class Demo2Controller : ControllerBase
     {
         private readonly MyDbContext myDbContext;
@@ -109,7 +110,7 @@ namespace Filter_WebAPI.Controllers
 
         /// <summary>
         /// 测试需要自动事务
-        /// 结果 是一条也未写入
+        /// 结果是一条也未写入
         /// </summary>
         /// <returns></returns>
         [HttpPost]
