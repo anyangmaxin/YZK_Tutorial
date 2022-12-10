@@ -24,8 +24,9 @@ builder.Services.Configure<MvcOptions>(opt =>
 //注入数据库上下文类
 builder.Services.AddDbContext<MyDbContext>(opt =>
 {
-    opt.UseSqlServer("Server=127.0.0.1;DataBase=TrainDB2;User ID=sa;Password=123465;Encrypt=True;TrustServerCertificate=True;");
-    
+    //opt.UseSqlServer("Server=127.0.0.1;DataBase=TrainDB2;User ID=sa;Password=123465;Encrypt=True;TrustServerCertificate=True;");
+    opt.UseSqlServer(builder.Configuration.GetSection("DB:SqlServer").Value);
+
     //Server=.;DataBase=TrainDB;User ID=sa;Password=2016;Trusted_Connection=True;
 });
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Filter_WebAPI.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Filter_WebAPI.Controllers
@@ -14,12 +15,20 @@ namespace Filter_WebAPI.Controllers
             this.myDbContext = myDbContext;
         }
 
-        [HttpPost]
-        public String Test2()
+        [HttpGet]
+        public Book GetBook(long id)
         {
-            myDbContext.Books.Add(new Model.Book { Id = 1, Title = "我最棒" });
-            myDbContext.SaveChangesAsync();
-            return "";
+            var model = myDbContext.Books.FirstOrDefault(x => x.Id == id);
+            return model;
+        }
+
+
+        [HttpPost]
+        public async Task<string> AddBook()
+        {
+            myDbContext.Books.Add(new Model.Book { Title = "我最棒" + DateTime.Now });
+            await myDbContext.SaveChangesAsync();
+            return "OK";
         }
     }
 }
