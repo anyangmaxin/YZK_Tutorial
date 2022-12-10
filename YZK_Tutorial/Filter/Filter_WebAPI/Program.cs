@@ -17,6 +17,7 @@ builder.Services.Configure<MvcOptions>(opt =>
 {
     opt.Filters.Add<MyActionFilter1>();
     opt.Filters.Add<MyExectionFilter>();
+    opt.Filters.Add<TranscationScopeFilter>();
 
 });
 
