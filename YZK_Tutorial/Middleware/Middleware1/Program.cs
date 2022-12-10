@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using System.IO.Pipes;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
@@ -15,10 +16,8 @@ app.Map("/test", async (pipeBuilder) =>
         await context.Response.WriteAsync("1 Start <br/>");
         //请求下一个中间件
         await next();
-
         //后逻辑  输出 内容
         await context.Response.WriteAsync("1 End <br/>");
-
     });
 
     pipeBuilder.Use(async (context, next) =>
@@ -27,7 +26,11 @@ app.Map("/test", async (pipeBuilder) =>
         await context.Response.WriteAsync("2 Start <br/>");
         await next();
         await context.Response.WriteAsync("2 End <br/>");
+    });
 
+    pipeBuilder.Run(async ctx =>
+    {        ctx.Response.ContentType = "text/html";
+        await ctx.Response.WriteAsync("Hello this is Middleware <br/>");
     });
 });
 
