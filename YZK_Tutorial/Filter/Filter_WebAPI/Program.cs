@@ -1,5 +1,7 @@
+using Filter_WebAPI;
 using Filter_WebAPI.Filter;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,16 @@ builder.Services.Configure<MvcOptions>(opt =>
     opt.Filters.Add<MyExectionFilter>();
 
 });
+
+
+//注入数据库上下文类
+builder.Services.AddDbContext<MyDbContext>(opt =>
+{
+    opt.UseSqlServer("Server=.;DataBase=TrainDB;User ID=sa;Password=2016;Trusted_Connection=True;");
+    
+    //Server=.;DataBase=TrainDB;User ID=sa;Password=2016;Trusted_Connection=True;
+});
+
 
 var app = builder.Build();
 
