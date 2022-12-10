@@ -20,13 +20,22 @@ namespace Filter_WebAPI.Filter
             //throw new NotImplementedException();
             //是否包含NotTransactionalAttribute  默认为不包含   如果标注了，则不提供事务
             bool hasNotTransactionalAttribute = false;
-            //判断当前 Action是否能转换成  控制器操作的描述符
-            if (context.ActionDescriptor is ControllerActionDescriptor)
+
+
+            ////判断当前 Action是否能转换成  控制器操作的描述符
+            //if (context.ActionDescriptor is ControllerActionDescriptor)
+            //{
+            //    //获取描述
+            //    var actionDesc = (ControllerActionDescriptor)context.ActionDescriptor;
+            //    //通过特性来给变量赋值 如果标注了，则不提供事务
+            //    hasNotTransactionalAttribute = actionDesc.MethodInfo.IsDefined(typeof(NotTransactionalAttribute), false);
+            //}
+
+            ControllerActionDescriptor controllerActionDescriptor = context.ActionDescriptor as ControllerActionDescriptor;
+            if (controllerActionDescriptor != null)
             {
-                //获取描述
-                var actionDesc = (ControllerActionDescriptor)context.ActionDescriptor;
-                //通过特性来给变量赋值 如果标注了，则不提供事务
-                hasNotTransactionalAttribute = actionDesc.MethodInfo.IsDefined(typeof(NotTransactionalAttribute), false);
+                //    //通过特性来给变量赋值 如果标注了，则不提供事务
+                hasNotTransactionalAttribute = controllerActionDescriptor.MethodInfo.IsDefined(typeof(NotTransactionalAttribute), false);
             }
 
             //如果标注了，则不提供事务
