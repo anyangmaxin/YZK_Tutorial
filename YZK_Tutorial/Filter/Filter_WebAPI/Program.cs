@@ -27,6 +27,8 @@ builder.Services.AddSwaggerGen(opt =>
 //
 builder.Services.Configure<MvcOptions>(opt =>
 {
+    //把限流请求Filter注册在第一个，增加效率，无效请求就不占用后续的资源 
+    opt.Filters.Add<RateLimitFilter>();
     opt.Filters.Add<MyActionFilter1>();
     opt.Filters.Add<MyExectionFilter>();
     opt.Filters.Add<TranscationScopeFilter>();
