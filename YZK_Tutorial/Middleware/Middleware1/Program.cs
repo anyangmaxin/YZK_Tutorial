@@ -20,6 +20,15 @@ app.Map("/test", async (pipeBuilder) =>
         await context.Response.WriteAsync("1 End <br/>");
 
     });
+
+    pipeBuilder.Use(async (context, next) =>
+    {
+        context.Response.ContentType = "text/html";
+        await context.Response.WriteAsync("2 Start <br/>");
+        await next();
+        await context.Response.WriteAsync("2 End <br/>");
+
+    });
 });
 
 app.Run();
