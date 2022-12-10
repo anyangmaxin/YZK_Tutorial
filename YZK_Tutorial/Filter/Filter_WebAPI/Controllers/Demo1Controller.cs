@@ -25,8 +25,21 @@ namespace Filter_WebAPI.Controllers
         [HttpGet]
         public string TestMyActionFilter1()
         {
-            Console.WriteLine("MyActionFilter1执行中：");
-            return "MyActionFilter1";
+            try
+            {
+                Console.WriteLine("MyActionFilter1执行中：");
+                return "MyActionFilter1";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("MyActionFilter1异常：" + ex.Message);
+                return ex.Message;
+            }
+            finally
+            {
+                Console.WriteLine("MyActionFilter1  finally：");
+            }
+
         }
     }
 }
