@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Builder;
+using Middleware1;
 using System.IO.Pipes;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "Hello World! ");
 //app.MapGet("/test", () => "Hello Test!");
 
 app.Map("/test", async (pipeBuilder) =>
@@ -27,11 +28,14 @@ app.Map("/test", async (pipeBuilder) =>
         await next();
         await context.Response.WriteAsync("2 End <br/>");
     });
-
+    //注册及使用自定义中间件
+    pipeBuilder.UseMiddleware<TestMiddleware>();
     pipeBuilder.Run(async ctx =>
-    {        ctx.Response.ContentType = "text/html";
+    {
+        ctx.Response.ContentType = "text/html";
         await ctx.Response.WriteAsync("Hello this is Middleware <br/>");
     });
 });
+
 
 app.Run();
