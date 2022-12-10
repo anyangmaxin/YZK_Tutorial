@@ -67,5 +67,26 @@ namespace Filter_WebAPI.Controllers
             }
         }
 
+
+
+
+        /// <summary>
+        /// 同一事务实现要么成功，要么失败
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<string> AddBookPerson3()
+        {
+            using (TransactionScope scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                myDbContext.Books.Add(new Model.Book { Title = "我最棒" + DateTime.Now });
+                await myDbContext.SaveChangesAsync();
+                myDbContext.Persons.Add(new Model.Person { Name = "姓名" + DateTime.Now, Age = 18 + Random.Shared.Next(1, 10) });
+                await myDbContext.SaveChangesAsync();
+                scope.Complete();
+                return "OK";
+            }
+        }
+
     }
 }
