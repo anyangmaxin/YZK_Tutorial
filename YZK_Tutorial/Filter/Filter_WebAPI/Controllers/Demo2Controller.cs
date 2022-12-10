@@ -120,7 +120,6 @@ namespace Filter_WebAPI.Controllers
             myDbContext.Persons.Add(new Model.Person { Id = 1, Name = "姓名" + DateTime.Now, Age = 18 + Random.Shared.Next(1, 10) }); ;
             await myDbContext.SaveChangesAsync();
             return "OK";
-
         }
 
     }
