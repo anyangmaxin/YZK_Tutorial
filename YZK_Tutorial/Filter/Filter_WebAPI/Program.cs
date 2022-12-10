@@ -16,6 +16,8 @@ builder.Services.AddSwaggerGen(opt =>
 {
     opt.SwaggerDoc("v0", new OpenApiInfo { Title = "Filter学习", Version = "1.0.0.0" });
     opt.SwaggerDoc("v1", new OpenApiInfo { Title = "Filter学习", Version = "1.0.0.0" });
+    opt.SwaggerDoc("v2", new OpenApiInfo { Title = "Filter学习", Version = "1.0.0.0" });
+
     //获取 xml文件名
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     //获取xml文件路径
@@ -24,7 +26,10 @@ builder.Services.AddSwaggerGen(opt =>
 
 });
 
-//
+//注册缓存
+builder.Services.AddMemoryCache();
+
+//注册Filter
 builder.Services.Configure<MvcOptions>(opt =>
 {
     //把限流请求Filter注册在第一个，增加效率，无效请求就不占用后续的资源 
@@ -56,6 +61,7 @@ if (app.Environment.IsDevelopment())
     {
         opt.SwaggerEndpoint("/swagger/v0/swagger.json", "Filter");
         opt.SwaggerEndpoint("/swagger/v1/swagger.json", "自动事务Filter");
+        opt.SwaggerEndpoint("/swagger/v2/swagger.json", "限流Filter");
     });
 }
 
